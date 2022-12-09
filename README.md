@@ -8,7 +8,7 @@ More features to come and I am also happy about pull requests ;)
 
 ## Installation
 
-Download the latest zip-archive from the releases page and extract it inside the *tools* diectory of your sketchbook.
+Download the latest zip-archive from [the releases page](https://github.com/letorbi/discord-rich-presence-for-processing/releases) and extract it inside the *tools* directory of your sketchbook.
 
 ----
 
