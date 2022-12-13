@@ -6,6 +6,14 @@ More features to come and I am also happy about pull requests ;)
 
 *This Processing tool is currently in beta-stage. All core features are implemented, but some advanced fetaures (like preferences) are still missing. Apart from that, it is also quite new, so there could still be undiscovered bugs.*
 
+## Supported Platforms
+
+* Windows (32bit & 64bit Intel)
+* MacOS (64bit Intel)
+* Linux (64bit Intel)
+
+Apple Silicon support is coming. See [this upstream issue](https://github.com/JnCrMx/discord-game-sdk4j/issues/48) for details on the progess.
+
 ## Installation
 
 Download the latest zip-archive from [the releases page](https://github.com/letorbi/discord-rich-presence-for-processing/releases) and extract it inside the *tools* directory of your sketchbook.
