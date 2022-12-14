@@ -20,9 +20,12 @@ repositories {
 dependencies {
     // Use JUnit Jupiter for testing.
     testImplementation 'org.junit.jupiter:junit-jupiter:5.8.2'
-    
-    implementation 'com.github.JnCrMx:discord-game-sdk4j:v0.5.5'
-    implementation files('../libs/pde.jar')
+
+    implementation files('../libs/pde-4.1.1.jar')
+
+    //implementation 'com.github.JnCrMx:discord-game-sdk4j:v0.5.5'
+    implementation files('../libs/discord-game-sdk4j-0.5.5.jar')
+    //implementation files('../libs/discord-game-sdk4j-0.5.5-linux35.jar')
 }
 
 tasks.named('test') {
