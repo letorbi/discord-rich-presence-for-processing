@@ -21,11 +21,11 @@ dependencies {
     // Use JUnit Jupiter for testing.
     testImplementation 'org.junit.jupiter:junit-jupiter:5.8.2'
 
-    implementation files('../libs/pde-4.1.1.jar')
+    // Required with Java Discord Game SDK
+    implementation 'com.google.code.gson:gson:2.10'
 
-    //implementation 'com.github.JnCrMx:discord-game-sdk4j:v0.5.5'
-    implementation files('../libs/discord-game-sdk4j-0.5.5.jar')
-    //implementation files('../libs/discord-game-sdk4j-0.5.5-linux35.jar')
+    implementation files('../libs/pde-4.1.1.jar')
+    implementation files('../libs/discord-game-sdk4j-0.5.5-java-impl.jar')
 }
 
 tasks.named('test') {

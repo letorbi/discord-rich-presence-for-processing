@@ -1,14 +1,9 @@
 package DiscordRichPresence;
 
-import java.io.File;
-import java.io.InputStream;
-import java.io.IOException;
-import java.nio.file.Files;
 import java.time.Instant;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
-import java.util.Locale;
 
 import processing.app.Base;
 import processing.app.Mode;
@@ -29,30 +24,19 @@ public class DiscordRichPresence implements Tool {
     Instant start = Instant.now();
 
     public void init(Base base) {
-        try {
-            //System.out.println("Initializing Discord Games SDK...");
-            File discordLibrary = loadDiscordLibrary();
-            if (discordLibrary == null) {
-                throw new IOException("Error downloading Discord SDK.");
-            }
-            Core.init(discordLibrary);
-            CreateParams params = new CreateParams();
-            params.setClientID(1050726275544789022L);
-            params.setFlags(CreateParams.getDefaultFlags());
-            core = new Core(params);
+        CreateParams params = new CreateParams();
+        params.setClientID(1050726275544789022L);
+        params.setFlags(CreateParams.getDefaultFlags());
+        core = new Core(params);
 
-            //System.out.println("Schedule rich presence updates...");
-            ScheduledExecutorService executor = Executors.newScheduledThreadPool(1);
-            executor.scheduleAtFixedRate(() -> {
-                if (updateValues(base)) {
-                    updateRichPresence();
-                }
-                core.runCallbacks();
-            }, 0, 3, TimeUnit.SECONDS);
-        }
-        catch (IOException e) {
-            e.printStackTrace();
-        }
+        //System.out.println("Schedule rich presence updates...");
+        ScheduledExecutorService executor = Executors.newScheduledThreadPool(1);
+        executor.scheduleAtFixedRate(() -> {
+            if (updateValues(base)) {
+                updateRichPresence();
+            }
+            core.runCallbacks();
+        }, 0, 3, TimeUnit.SECONDS);
     }
 
     public void run() {
@@ -121,41 +105,4 @@ public class DiscordRichPresence implements Tool {
         activity.assets().setLargeImage("logo");
         core.activityManager().updateActivity(activity);
     }
-
-    // Based on: https://github.com/JnCrMx/discord-game-sdk4j/blob/master/examples/DownloadNativeLibrary.java
-    private File loadDiscordLibrary() throws IOException {
-		String name = "discord_game_sdk";
-		String suffix;
-		String osName = System.getProperty("os.name").toLowerCase(Locale.ROOT);
-		String arch = System.getProperty("os.arch").toLowerCase(Locale.ROOT);
-
-		if(osName.contains("windows")) {
-			suffix = ".dll";
-		}
-		else if(osName.contains("linux")) {
-			suffix = ".so";
-		}
-		else if(osName.contains("mac os")) {
-			suffix = ".dylib";
-		}
-		else {
-			throw new RuntimeException("cannot determine OS type: "+osName);
-		}
-		// Some systems report "amd64" (e.g. Windows and Linux), some "x86_64" (e.g. Mac OS).
-		if(arch.equals("amd64"))
-			arch = "x86_64";
-
-		String libPath = "lib/"+arch+"/"+name+suffix;
-	    InputStream in = getClass().getResourceAsStream("/" + libPath);
-        // We need to ceate a temp directory, because we may not change the filename on Windows
-        File tempDir = new File(System.getProperty("java.io.tmpdir"), "java-"+name+System.nanoTime());
-        if(!tempDir.mkdir())
-            throw new IOException("Cannot create temporary directory");
-        tempDir.deleteOnExit();
-        File temp = new File(tempDir, name+suffix);
-        temp.deleteOnExit();
-        Files.copy(in, temp.toPath());
-        in.close();
-        return temp;
-	}
 }
