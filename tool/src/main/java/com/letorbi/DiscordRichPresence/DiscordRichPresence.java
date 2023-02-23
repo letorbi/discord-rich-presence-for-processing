@@ -1,4 +1,4 @@
-package DiscordRichPresence;
+package com.letorbi.DiscordRichPresence;
 
 import java.time.Instant;
 import java.util.concurrent.Executors;

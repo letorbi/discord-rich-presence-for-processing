@@ -32,6 +32,7 @@ tasks.named('test') {
     useJUnitPlatform()
 }
 
+// Include all libraries in the jar
 jar {
     from {
         configurations.runtimeClasspath.filter{ it.exists() }.collect { it.isDirectory() ? it : zipTree(it) }
