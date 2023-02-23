@@ -1,3 +1,6 @@
+/*.zip
+
+# Gradle files
 .gradle
 **/build/
 !src/**/build/
