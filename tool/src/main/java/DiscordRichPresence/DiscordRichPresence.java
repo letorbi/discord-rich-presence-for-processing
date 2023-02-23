@@ -14,6 +14,7 @@ import processing.app.ui.Editor;
 
 import de.jcm.discordgamesdk.Core;
 import de.jcm.discordgamesdk.CreateParams;
+import de.jcm.discordgamesdk.LogLevel;
 import de.jcm.discordgamesdk.activity.Activity;
 
 public class DiscordRichPresence implements Tool {
@@ -28,6 +29,7 @@ public class DiscordRichPresence implements Tool {
         params.setClientID(1050726275544789022L);
         params.setFlags(CreateParams.getDefaultFlags());
         core = new Core(params);
+        core.setLogHook(LogLevel.INFO, Core.DEFAULT_LOG_HOOK);
 
         //System.out.println("Schedule rich presence updates...");
         ScheduledExecutorService executor = Executors.newScheduledThreadPool(1);
@@ -93,8 +95,8 @@ public class DiscordRichPresence implements Tool {
     }
 
     private void updateRichPresence() {
-        System.out.println("Updating Discord rich presence...");
-        /*System.out.println("Mode: " + mode);
+        /*System.out.println("Updating Discord rich presence...");
+        System.out.println("Mode: " + mode);
         System.out.println("Sketch: " + name);
         System.out.println("File: " + file);*/
 
