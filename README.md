@@ -9,10 +9,10 @@ More features to come and I am also happy about pull requests ;)
 ## Supported Platforms
 
 * Windows (32bit & 64bit Intel)
-* MacOS (64bit Intel)
+* MacOS (64bit Intel, Silicon)
 * Linux (64bit Intel)
 
-Apple Silicon support is coming. See [this upstream issue](https://github.com/JnCrMx/discord-game-sdk4j/issues/48) for details on the progess.
+In general all plattforms that are supported by Processing and Discord should work.
 
 ## Installation
 
@@ -20,4 +20,4 @@ Download the latest zip-archive from [the releases page](https://github.com/leto
 
 ----
 
-Copyright (c) 2022 Torben Haase \<[https://pixelsvsbytes.com](https://pixelsvsbytes.com)>
+Copyright (c) 2022 Torben Haase \<[https://letorbi.com](https://letorbi.com)>
