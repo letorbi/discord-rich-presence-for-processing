@@ -102,7 +102,7 @@ public class DiscordRichPresence implements Tool {
 
         Activity activity = new Activity();
         activity.setDetails("Creating " + mode + " code.");
-        activity.setState("Sketch: " + name);
+        //activity.setState("Sketch: " + name);
         activity.timestamps().setStart(start);
         activity.assets().setLargeImage("logo");
         core.activityManager().updateActivity(activity);
