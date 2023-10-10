@@ -21,7 +21,7 @@ dependencies {
     implementation 'com.github.JnCrMx:discord-game-sdk4j:java-impl-SNAPSHOT'
     implementation 'com.google.code.gson:gson:2.10'
 
-    implementation files('../libs/pde-4.1.1.jar')
+    implementation files('/usr/share/processing/lib/pde.jar')
 
     // Use JUnit Jupiter for testing.
     testImplementation 'org.junit.jupiter:junit-jupiter:5.8.2'
