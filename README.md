@@ -14,6 +14,10 @@ In general all platforms that are supported by Processing and Discord should wor
 
 ## Installation
 
+The easiest way to install Discord Rich Presence for Processing is via the Contribution Manager (Tools > Manage Tools...). Just open the Tools tab, select the Discord Rich Presence entry from the list and click on the install button.
+
+### Manual install
+
 Download the latest zip-archive from [the releases page](https://github.com/letorbi/discord-rich-presence-for-processing/releases) and extract it inside the *tools* directory of your sketchbook.
 
 ----
