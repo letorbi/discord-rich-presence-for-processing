@@ -28,16 +28,28 @@ public class DiscordRichPresence implements Tool {
         CreateParams params = new CreateParams();
         params.setClientID(1050726275544789022L);
         params.setFlags(CreateParams.getDefaultFlags());
-        core = new Core(params);
-        core.setLogHook(LogLevel.INFO, Core.DEFAULT_LOG_HOOK);
 
-        //System.out.println("Schedule rich presence updates...");
         ScheduledExecutorService executor = Executors.newScheduledThreadPool(1);
         executor.scheduleAtFixedRate(() -> {
-            if (updateValues(base)) {
-                updateRichPresence();
+            try {
+                //System.out.println("Discord loop...");
+                if (core == null) {
+                    core = new Core(params);
+                    core.setLogHook(LogLevel.INFO, Core.DEFAULT_LOG_HOOK);
+                    updateRichPresence();
+                }
+                else if (updateValues(base)) {
+                    updateRichPresence();
+                }
+                core.runCallbacks();
             }
-            core.runCallbacks();
+            catch (Exception e) {
+                //System.out.println("Discord exception: " + e);
+                if (this.core != null) {
+                    this.core.close();
+                    this.core = null;
+                }
+            }
         }, 0, 3, TimeUnit.SECONDS);
     }
 
