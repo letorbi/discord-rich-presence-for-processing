@@ -62,7 +62,7 @@ public class DiscordRichPresence implements Tool {
     }
 
     public void run() {
-        System.out.println("Hello from Discord Rich Presence :)");
+        System.out.println("Discord Rich Presence 1.1.0");
         System.out.println("Sorry, no preferences, yet.");
     }
 
