@@ -11,4 +11,4 @@ plugins {
 }
 
 rootProject.name = "Discord Rich Presence for Processing"
-include("lib")
+include("tool")
