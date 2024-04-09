@@ -18,10 +18,10 @@ repositories {
 }
 
 dependencies {
-    //implementation 'com.github.letorbi:discord-game-sdk4j:reconnecting-channels-SNAPSHOT'
+    implementation 'com.github.letorbi:discord-game-sdk4j:connection-check-SNAPSHOT'
     implementation 'com.google.code.gson:gson:2.10'
 
-    implementation files('/home/letorbi/Repositories/discord-game-sdk4j/target/discord-game-sdk4j-0.5.5.jar')
+    //implementation files('/home/letorbi/Repositories/discord-game-sdk4j/target/discord-game-sdk4j-0.5.5.jar')
     implementation files('/usr/share/processing/lib/pde.jar')
 
     // Use JUnit Jupiter for testing.

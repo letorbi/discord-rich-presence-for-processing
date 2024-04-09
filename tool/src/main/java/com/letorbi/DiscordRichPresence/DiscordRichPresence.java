@@ -23,6 +23,7 @@ public class DiscordRichPresence implements Tool {
     String name;
     String file;
     Instant start = Instant.now();
+    int ticks = 0;
 
     public void init(Base base) {
         CreateParams params = new CreateParams();
@@ -32,25 +33,32 @@ public class DiscordRichPresence implements Tool {
         ScheduledExecutorService executor = Executors.newScheduledThreadPool(1);
         executor.scheduleAtFixedRate(() -> {
             try {
-                //System.out.println("Discord loop...");
-                if (core == null) {
+                ticks = ticks % 5;
+                //System.out.println("Discord loop tick: " + ticks);
+                if (core == null && ticks == 0) {
+                    //System.out.println("Creating Discord core...");
                     core = new Core(params);
                     core.setLogHook(LogLevel.INFO, Core.DEFAULT_LOG_HOOK);
                     updateRichPresence();
                 }
-                else if (updateValues(base)) {
-                    updateRichPresence();
+                else if (core != null) {
+                    if (updateValues(base))
+                        updateRichPresence();
+                    core.runCallbacks();
+                    core.isDiscordRunning();
                 }
-                core.runCallbacks();
             }
             catch (Exception e) {
                 //System.out.println("Discord exception: " + e);
-                if (this.core != null) {
-                    this.core.close();
-                    this.core = null;
+                if (core != null) {
+                    core.close();
+                    core = null;
                 }
             }
-        }, 0, 3, TimeUnit.SECONDS);
+            finally {
+                ticks++;
+            }
+        }, 0, 1, TimeUnit.SECONDS);
     }
 
     public void run() {
