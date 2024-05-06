@@ -40,7 +40,8 @@ class DiscordRichPresence : Tool {
                 } else if (core != null) {
                     if (updateValues(base)) updateRichPresence()
                     core!!.runCallbacks()
-                    core!!.isDiscordRunning()
+                    if (!core!!.isDiscordRunning())
+                        throw Exception("Discord is not running")
                 }
             } catch (e: Exception) {
                 if (core != null) {
