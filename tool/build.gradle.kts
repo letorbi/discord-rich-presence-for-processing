@@ -32,11 +32,12 @@ tasks.named<Test>("test") {
 
 // Include required libraries in the jar
 tasks.named<Jar>("jar") {
+    archiveFileName.set("DiscordRichPresence.jar")
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
     from(
         configurations.runtimeClasspath.get().filter {
-            // Exclude Kotlin and Processing libraries
-            val path = it.toString()
-            !(path.contains("org.jetbrains") or path.contains("pde.jar")) and it.exists()
+            // Exclude Processing libraries
+            !it.toString().contains("pde.jar") and it.exists()
         }.map {
             if (it.isDirectory) it else zipTree(it)
         }
