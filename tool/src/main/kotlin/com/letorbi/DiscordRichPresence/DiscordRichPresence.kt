@@ -25,9 +25,9 @@ class DiscordRichPresence : Tool {
     private var ticks = 0
 
     override fun init(base: Base) {
-        val params = CreateParams()
-        params.clientID = 1050726275544789022L
-        params.flags = CreateParams.getDefaultFlags()
+        val params = CreateParams();
+        params.setClientID(1050726275544789022L);
+        params.setFlags(CreateParams.getDefaultFlags());
 
         val executor: ScheduledExecutorService = Executors.newScheduledThreadPool(1)
         executor.scheduleAtFixedRate({
